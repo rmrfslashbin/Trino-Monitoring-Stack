@@ -1,0 +1,63 @@
+{
+    "servers": [
+        {
+            "port": "9080",
+            "host": "trino",
+            "queries": [
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriterFactory",
+                            "port": 2003,
+                            "host": "graphite"
+                        }
+                    ],
+                    "obj": "java.lang:type=OperatingSystem",
+                    "attr": [
+                        "SystemLoadAverage",
+                        "AvailableProcessors",
+                        "TotalPhysicalMemorySize",
+                        "FreePhysicalMemorySize",
+                        "TotalSwapSpaceSize",
+                        "FreeSwapSpaceSize",
+                        "OpenFileDescriptorCount",
+                        "MaxFileDescriptorCount"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriterFactory",
+                            "port": 2003,
+                            "host": "graphite"
+                        }
+                    ],
+                    "obj": "trino.memory:name=ClusterMemoryManager",
+                    "attr": [
+                        "ClusterMemoryBytes",
+                        "TotalAvailableProcessors"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriterFactory",
+                            "port": 2003,
+                            "host": "graphite"
+                        }
+                    ],
+                    "obj": "trino.execution:name=QueryManager",
+                    "attr": [
+                        "CompletedQueries.FifteenMinute.Count",
+                        "CompletedQueries.FiveMinute.Count",
+                        "CompletedQueries.OneMinute.Count",
+                        "ConsumedCpuTimeSecs.FifteenMinute.Count",
+                        "ConsumedCpuTimeSecs.FiveMinute.Count",
+                        "ConsumedCpuTimeSecs.OneMinute.Count"
+                    ]
+                }
+            ],
+            "numQueryThreads": 2
+        }
+    ]
+}

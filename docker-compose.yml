@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  trino:
+    image: "mytrino:latest"
+    container_name: "trino"
+    ports:
+      - "8080:8080"
+      - "9080:9080"
+      - "9081:9081"
+    expose: ["9080", "9081"]
+    volumes:
+      - trino-config:/etc/trino
+  grafana:
+    image: "grafana/grafana:latest"
+    container_name: "grafana"
+    ports:
+      - "3000:3000"
+    links: 
+      - "graphite"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+  jmxtrans:
+    image: "jmxtrans/jmxtrans:latest"
+    container_name: "jmxtrans"
+    expose: ["9999"]
+    volumes:
+      - jmxtrans-config:/var/lib/jmxtrans
+    links:
+      - trino
+  graphite:
+    image: "graphiteapp/graphite-statsd:latest"
+    container_name: "graphite"
+    expose: ["80", "2003-2004", "2023-2024", "8125/udp", "8126"]
+    ports: ["8085:80"]
+
+
+volumes:
+  trino-config:
+    external: true
+  jmxtrans-config:
+  grafana-storage:
+
+
