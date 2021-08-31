@@ -4,6 +4,9 @@ An example Docker stack to deploy and monitor a Trino server.
 ## Security Note
 This stack is NOT secure. It is only a PoC. YMMV in prod.
 
+## Build Trino
+If needed, build a new Docker image for Trino. This is only needed if additional plugins are required. Replace your Trino image as needed in `docker-compose.yml`.
+
 ## Trino Config
 ### Hive
 See `./trino-server/etc/trino/catalog/hive.properties`. Fill in the blanks.
