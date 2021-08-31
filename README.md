@@ -37,3 +37,10 @@ A volume `jmxtrans-config` is defined. In this volume, place a config file to re
 
 The host/port for the json config refelect the Trino host name (`trino` in this example) and the `com.sun.management.jmxremote.port` value noted above- in this example `9080`.
 
+## Useful Links
+- https://github.com/jmxtrans/jmxtrans/wiki/Installation
+- http://graphiteapp.org/
+- https://trino.io/docs/current/installation/deployment.html
+- https://grafana.com/docs/grafana/latest/administration/configure-docker/
+- https://hub.docker.com/r/graphiteapp/graphite-statsd
+- https://hub.docker.com/r/jmxtrans/jmxtrans
