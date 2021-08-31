@@ -13,6 +13,7 @@
                         }
                     ],
                     "obj": "java.lang:type=OperatingSystem",
+                    "resultAlias": "os",
                     "attr": [
                         "SystemLoadAverage",
                         "AvailableProcessors",
@@ -33,6 +34,7 @@
                         }
                     ],
                     "obj": "trino.memory:name=ClusterMemoryManager",
+                    "resultAlias": "clust_mem_mngr",
                     "attr": [
                         "ClusterMemoryBytes",
                         "TotalAvailableProcessors"
@@ -47,6 +49,7 @@
                         }
                     ],
                     "obj": "trino.execution:name=QueryManager",
+                    "resultAlias": "query-mngr",
                     "attr": [
                         "CompletedQueries.FifteenMinute.Count",
                         "CompletedQueries.FiveMinute.Count",
